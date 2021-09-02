@@ -2,20 +2,24 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoItem from './TodoItem';
 
-const TodoItemList = ({ title, todoList, setTodoList }) => (
+const TodoItemList = ({ title, todoList, setTodoList, checkedList }) => (
   <div className="todoapp__list">
     <p className="todoapp__list-tit">{title}</p>
 
     <ul className="todoapp__list-ul">
       {todoList && //todoList 있을때만 출력
-        todoList.map((todoItem) => (
-          <TodoItem
-            key={todoItem.id}
-            todoItem={todoItem}
-            todoList={todoList}
-            setTodoList={setTodoList}
-          />
-        ))}
+        todoList.map((todoItem) => {
+          if (checkedList !== todoItem.checked) return null;
+          return (
+            //map을 이용해 todoItem을 출력
+            <TodoItem
+              key={todoItem.id}
+              todoItem={todoItem}
+              todoList={todoList}
+              setTodoList={setTodoList}
+            />
+          );
+        })}
     </ul>
   </div>
 );

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import Proptypes from 'prop-types';
 
 const InputBox = ({ todoList, setTodoList }) => {
@@ -13,15 +13,14 @@ const InputBox = ({ todoList, setTodoList }) => {
     const nextTodoList = todoList.concat({
       id: todoList.length,
       text,
+      checked: false,
     });
     setTodoList(nextTodoList);
 
     setText('');
     inputRef.current.focus();
   };
-  useEffect(() => {
-    console.log(todoList);
-  }, [todoList]);
+
   return (
     <div className="todoapp__inputbox">
       <input

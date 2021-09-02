@@ -12,8 +12,14 @@ const Home = () => {
         title={'할 일'}
         todoList={todoList}
         setTodoList={setTodoList}
+        checkedList={false}
       />
-      <TodoItemList />
+      <TodoItemList
+        title={'완료 항목'}
+        todoList={todoList}
+        setTodoList={setTodoList}
+        checkedList={true}
+      />
     </div>
   );
 };
