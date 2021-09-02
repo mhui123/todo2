@@ -9,6 +9,9 @@ const TodoItemList = ({ title, todoList, setTodoList, checkedList }) => (
     <ul className="todoapp__list-ul">
       {todoList && //todoList 있을때만 출력
         todoList.map((todoItem) => {
+          //삭제한 경우 출력하지 않음 if(true)
+          if (todoItem.deleted) return null;
+
           if (checkedList !== todoItem.checked) return null;
           return (
             //map을 이용해 todoItem을 출력

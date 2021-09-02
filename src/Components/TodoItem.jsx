@@ -5,12 +5,14 @@ const TodoItem = ({ todoItem, todoList, setTodoList }) => {
   const [edited, setEdited] = useState(false);
   const [newText, setNewTest] = useState(todoItem.text);
   const editInputRef = useRef(null);
+
   useEffect(() => {
     // edit 모드일때 포커싱을 한다.
     if (edited) {
       editInputRef.current.focus();
     }
   }, [edited]);
+
   const onChangeCheckbox = () => {
     const nextTodoList = todoList.map((item) => ({
       ...item, // id 값이 같은 항목의 checked 값을 Toggle 함
@@ -18,6 +20,7 @@ const TodoItem = ({ todoItem, todoList, setTodoList }) => {
     }));
     setTodoList(nextTodoList);
   };
+
   const onClickEditButton = () => {
     setEdited(true);
   };
@@ -31,6 +34,17 @@ const TodoItem = ({ todoItem, todoList, setTodoList }) => {
     }));
     setTodoList(nextTodoList);
     setEdited(false);
+  };
+
+  const onClickDeleteButton = () => {
+    if (window.confirm('삭제 하시겠습니까?')) {
+      const nextTodoList = todoList.map((item) => ({
+        ...item,
+        deleted: item.id === todoItem.id ? true : item.deleted,
+      }));
+
+      setTodoList(nextTodoList);
+    }
   };
   return (
     <li className="todoapp__item">
@@ -88,10 +102,13 @@ const TodoItem = ({ todoItem, todoList, setTodoList }) => {
         ) : null
       }{' '}
       {/* 삭제 버튼 */}{' '}
-      <button type="button" className="todoapp__item-delete-btn">
-        {' '}
-        🗑{' '}
-      </button>{' '}
+      <button
+        type="button"
+        className="todoapp__item-delete-btn"
+        onClick={onClickDeleteButton}
+      >
+        🗑
+      </button>
     </li>
   );
 };

@@ -14,6 +14,7 @@ const InputBox = ({ todoList, setTodoList }) => {
       id: todoList.length,
       text,
       checked: false,
+      deteted: false,
     });
     setTodoList(nextTodoList);
 
