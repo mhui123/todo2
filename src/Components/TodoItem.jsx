@@ -86,8 +86,7 @@ const TodoItem = ({ todoItem, todoList, setTodoList }) => {
               className="todoapp__item-edit-btn"
               onClick={onClickSubmitButton}
             >
-              {' '}
-              👌{' '}
+              수정완료
             </button>
           ) : (
             <button
@@ -95,8 +94,7 @@ const TodoItem = ({ todoItem, todoList, setTodoList }) => {
               className="todoapp__item-edit-btn"
               onClick={onClickEditButton}
             >
-              {' '}
-              ✏{' '}
+              수정
             </button>
           )
         ) : null
@@ -107,7 +105,7 @@ const TodoItem = ({ todoItem, todoList, setTodoList }) => {
         className="todoapp__item-delete-btn"
         onClick={onClickDeleteButton}
       >
-        🗑
+        삭제
       </button>
     </li>
   );
