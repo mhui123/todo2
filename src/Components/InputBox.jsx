@@ -5,10 +5,12 @@ const InputBox = ({ todoList, setTodoList }) => {
   const [text, setText] = useState('');
   const inputRef = useRef(null); //DOM에 직접 접근할 때 사용
 
+  //추가사항을 입력시 발생할 이벤트
   const onChangeInput = (e) => {
     setText(e.target.value);
   };
 
+  //추가버튼 클릭시 발생할 이벤트
   const onClickAddButton = () => {
     const nextTodoList = todoList.concat({
       id: todoList.length,
